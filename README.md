@@ -18,11 +18,11 @@ BookStore app with a feature-first layered clean architecture(BLOC), lazy loadin
 ## Preview
 
 <p>
-    <img src="screenshots/preview.gif" width="19%"/>
-    <img src="screenshots/popular.png" width="19%"/>
-    <img src="screenshots/detail.png" width="19%"/>
-    <img src="screenshots/favorites.png" width="19%"/>
-    <img src="screenshots/search.png" width="19%"/>
+    <img src="screenshots/ss1.png" width="19%"/>
+    <img src="screenshots/ss2.png" width="19%"/>
+    <img src="screenshots/ss3.png" width="19%"/>
+    <img src="screenshots/ss4.png" width="19%"/>
+    <img src="screenshots/ss5.png" width="19%"/>
 </p>
 
 ## Folder Structure
