@@ -1,5 +1,4 @@
-import 'dart:ffi';
-
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:bookstore/features/displaybooks/presentation/Blocs/local/bloc/local_bok_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -45,6 +44,21 @@ class CartPage extends StatelessWidget {
                       GestureDetector(
                         onTap: () {
                           context.read<AppthemeCubit>().init();
+                          final snackBar = SnackBar(
+                            /// need to set following properties for best effect of awesome_snackbar_content
+                            elevation: 0,
+                            behavior: SnackBarBehavior.floating,
+                            backgroundColor: Colors.transparent,
+                            content: AwesomeSnackbarContent(
+                              title: 'Book Removed!',
+                              message: 'book removed from cart!',
+                              contentType: ContentType.failure,
+                            ),
+                          );
+
+                          ScaffoldMessenger.of(context)
+                            ..hideCurrentSnackBar()
+                            ..showSnackBar(snackBar);
                         },
                         child: Container(
                           height: 45.h,

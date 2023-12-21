@@ -4,6 +4,7 @@ import 'package:bookstore/features/displaybooks/presentation/Blocs/local/bloc/lo
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 
 class BookDetailsPage extends StatelessWidget {
   static const routeName = '-/book-detail';
@@ -108,7 +109,7 @@ class BookDetailsPage extends StatelessWidget {
                                   color: TColor.serconday),
                             ),
                             const SizedBox(
-                              height: 5,
+                              height: 12,
                             ),
                             Text(
                                 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using making it look like readable English.',
@@ -118,33 +119,89 @@ class BookDetailsPage extends StatelessWidget {
                                   fontSize: 12.sp,
                                 )),
                             const SizedBox(
-                              height: 80,
+                              height: 50,
                             ),
-                            Align(
-                                alignment: Alignment.bottomCenter,
-                                child: GestureDetector(
-                                  onTap: () {
-                                    context
-                                        .read<LocalBokBloc>()
-                                        .add(saveBook(book));
-                                    // Scaffold.of(context).showSnackBar(const SnackBar(content: content));
-                                  },
-                                  child: Container(
-                                    height: 45.h,
-                                    width: 200.w,
-                                    decoration: BoxDecoration(
-                                        color: TColor.primary,
-                                        borderRadius: BorderRadius.circular(8)),
-                                    child: Center(
-                                        child: Text('Get a copy',
-                                            style: textTheme.labelMedium!
-                                                .copyWith(
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 22.sp,
-                                                    color: TColor.background,
-                                                    letterSpacing: 4))),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                GestureDetector(
+                                    onTap: () {
+                                      context
+                                          .read<LocalBokBloc>()
+                                          .add(saveBook(book));
+                                      final snackBar = SnackBar(
+                                        behavior: SnackBarBehavior.fixed,
+                                        backgroundColor: Colors.transparent,
+                                        content: AwesomeSnackbarContent(
+                                          color: TColor.primary,
+                                          titleFontSize: 22,
+                                          messageFontSize: 12,
+                                          title: 'CHEERS!',
+                                          message: 'You added a new book',
+
+                                          /// change contentType to ContentType.success, ContentType.warning or ContentType.help for variants
+                                          contentType: ContentType.success,
+                                        ),
+                                      );
+
+                                      ScaffoldMessenger.of(context)
+                                        ..hideCurrentSnackBar()
+                                        ..showSnackBar(snackBar);
+                                      // Scaffold.of(context).showSnackBar(const SnackBar(content: content));
+                                    },
+                                    child: Container(
+                                      height: 55.h,
+                                      width: 230.w,
+                                      decoration: BoxDecoration(
+                                          color: TColor.primary,
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                          boxShadow: [
+                                            BoxShadow(
+                                                color: Colors.grey
+                                                    .withOpacity(0.2),
+                                                spreadRadius: 8,
+                                                blurRadius: 12,
+                                                offset: const Offset(4, 18))
+                                          ]),
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 28.0),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              'Get a copy',
+                                              style: textTheme.labelLarge!
+                                                  .copyWith(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 22.sp,
+                                                      color: TColor.background,
+                                                      letterSpacing: 4),
+                                            ),
+                                            Icon(
+                                              Icons.shopping_bag,
+                                              color: TColor.background,
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    )),
+                                Container(
+                                  height: 50.h,
+                                  width: 60.w,
+                                  decoration: BoxDecoration(
+                                      color: Colors.grey.withOpacity(0.3),
+                                      borderRadius: BorderRadius.circular(10)),
+                                  child: Icon(
+                                    Icons.delete_forever,
+                                    color: TColor.primary,
                                   ),
-                                ))
+                                )
+                              ],
+                            )
                           ]),
                     ),
                   ),
