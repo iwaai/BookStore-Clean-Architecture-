@@ -1,16 +1,75 @@
-# bookstore
+# Simple Book Store App
 
-A new Flutter project.
+BookStore app with a feature-first layered clean architecture(BLOC), lazy loading, and adaptive theming. The UI of the app is intentionally kept simple, as my primary objective was to showcase the implementation of clean architecture, lazy loading, code logic, and clean architecture.
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application.
+- Popular Book List: The app displays a list of popular Books.
+- View Details: Access detailed information about each Book.
+- add to card: Add and store favorite books locally using [Floor](https://pub.dev/packages/floor).
+- Adaptive Theme: The app automatically adjusts its theme based on the device's settings and remembers user preferences.
 
-A few resources to get you started if this is your first Flutter project:
+## TECH STACK
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- [Flutter](https://flutter.dev/)
+- [Dart](https://dart.dev/)
+- [wolnelektury.pl API](https://wolnelektury.pl/api/books/)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Preview
+
+<p>
+    <img src="screenshots/preview.gif" width="19%"/>
+    <img src="screenshots/popular.png" width="19%"/>
+    <img src="screenshots/detail.png" width="19%"/>
+    <img src="screenshots/favorites.png" width="19%"/>
+    <img src="screenshots/search.png" width="19%"/>
+</p>
+
+## Folder Structure
+
+- "core" folder contains application-agnostic code that can be reused in other projects.
+- "feature" folder represents the app's feature set. Each feature is divided into subfolders for data, domain, and presentation.
+
+## Packages
+
+- State Management
+  - [Bloc](https://pub.dev/packages/flutter_bloc)
+- Caching
+  - [Floor](https://pub.dev/packages/floor)
+- Networking
+  - [Dio](https://pub.dev/packages/dio)
+- Routing
+  - [AutoRoute](https://pub.dev/packages/auto_route)
+- Dependency Injection
+  - [GetIt](https://pub.dev/packages/get_it)
+- JsonParsing
+  - [JsonSerializable](https://pub.dev/packages/json_serializable)
+
+### Run this project
+
+##### Clone this repository
+
+```sh
+git clone https://github.com/iwaai/BookStore-Clean-Architecture-
+```
+
+##### Go to the project directory
+
+```sh
+cd BOOKSTORE
+```
+
+##### Get all the packages
+
+```sh
+flutter pub get
+```
+
+##### Execute this command in the terminal
+
+```sh
+dart run build_runner build --delete-conflicting-outputs
+
+```
+
+##### Run the project
